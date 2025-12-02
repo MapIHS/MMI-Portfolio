@@ -31,7 +31,7 @@ export const PROJECT = {
 			live_demo: '#',
 			description: 'Aplikasi Baca Anime, Komik, Manga',
 			thumbnails: 'otakutoon.png',
-			type: 'Practice'
+			type: 'Entertaiment'
 		},
 		{
 			name: 'Conito App',
@@ -39,6 +39,14 @@ export const PROJECT = {
 			description:
 				'Free Manhwa and Manhua Reading App Without Ads With more than 50+ Languages available. Conito offers a seamless reading experience with a vast collection of comics from various genres and languages.',
 			thumbnails: 'conito-app.png',
+			type: 'Entertaiment'
+		},
+		{
+			name: 'IMoney',
+			live_demo: '#',
+			description:
+				'Managed MOney',
+			thumbnails: 'imoney.png',
 			type: 'Practice'
 		}
 	]

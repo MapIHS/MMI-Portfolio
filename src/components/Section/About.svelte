@@ -27,15 +27,6 @@
 			<div
 				class="p-3 border bg-dark/40 justify-center backdrop-blur-sm border-white/10 rounded-2xl relative flex items-center group"
 			>
-				<p class="absolute top-4 text-white/20 font-medium p-2 z-20">
-					Photo by
-					<a class="hover:text-primary transition-colors" href="https://unsplash.com/@sooprun"
-						>Alex Suprun</a
-					>
-					on
-					<a class="hover:text-primary transition-colors" href="https://unsplash.com">Unsplash</a>
-				</p>
-
 				<div>
 					<div>
 						<img
