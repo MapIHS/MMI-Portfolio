@@ -11,7 +11,7 @@ export const PROFILE = {
 		return `${this.firstname} ${this.lastname}`;
 	},
 	role: 'Flutter Developer',
-	avatar: '/images/profile.png'
+	avatar: '/images/profile.webp'
 };
 
 export const HERO = {
@@ -30,7 +30,7 @@ export const PROJECT = {
 			name: 'Otaku Toon',
 			live_demo: '#',
 			description: 'Aplikasi Baca Anime, Komik, Manga',
-			thumbnails: 'otakutoon.png',
+			thumbnails: 'otakutoon.webp',
 			type: 'Entertaiment'
 		},
 		{
@@ -38,7 +38,7 @@ export const PROJECT = {
 			live_demo: '#',
 			description:
 				'Free Manhwa and Manhua Reading App Without Ads With more than 50+ Languages available. Conito offers a seamless reading experience with a vast collection of comics from various genres and languages.',
-			thumbnails: 'conito-app.png',
+			thumbnails: 'conito-app.webp',
 			type: 'Entertaiment'
 		},
 		{
@@ -46,7 +46,7 @@ export const PROJECT = {
 			live_demo: '#',
 			description:
 				'Managed MOney',
-			thumbnails: 'imoney.png',
+			thumbnails: 'imoney.webp',
 			type: 'Practice'
 		}
 	]
