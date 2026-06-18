@@ -12,7 +12,8 @@ export const PROFILE = {
 		return `${this.firstname} ${this.lastname}`;
 	},
 	role: 'Flutter Developer',
-	avatar: '/images/profile.webp'
+	avatar: '/images/profile.webp',
+	github: 'https://github.com/MapIHS'
 };
 
 export const HERO = {

@@ -1,6 +1,7 @@
 <script lang="ts">
+	import { Github } from 'lucide-svelte';
 	import Button from '../Button.svelte';
-	import { HERO, PROJECT } from '$lib/utils/content';
+	import { HERO, PROFILE, PROJECT } from '$lib/utils/content';
 </script>
 
 <div id="hero" class="relative container py-40">
@@ -20,9 +21,22 @@
 			{HERO.subline}
 		</p>
 
-		<div class="mt-8 flex items-center gap-4">
+		<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
 			<Button label="View Project" to="#work" />
 			<Button label="Contact Me" to="#contact" variant="btn-dark" />
+			<a
+				href={PROFILE.github}
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="Open GitHub profile"
+				title="GitHub"
+				class="btn-dark group relative inline-flex size-12 items-center justify-center overflow-hidden rounded-lg p-0"
+			>
+				<div
+					class="absolute inset-x-0 top-0 h-4 w-full rounded-full bg-white/20 blur-lg transition-all duration-500 group-hover:h-1/2"
+				></div>
+				<Github class="relative" size={20} strokeWidth={1.8} />
+			</a>
 		</div>
 	</div>
 
