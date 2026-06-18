@@ -6,7 +6,7 @@
 
 <ScrollSmooth>
 	<section id="about" class="container">
-		<div class="grid items-center grid-cols-1 lg:grid-cols-2 gap-8">
+		<div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 			<div>
 				<p class="badge">{ABOUT.label}</p>
 				<h2 class="section-title">
@@ -25,12 +25,12 @@
 			</div>
 
 			<div
-				class="p-3 border bg-dark/40 justify-center backdrop-blur-sm border-white/10 rounded-2xl relative flex items-center group"
+				class="group relative flex items-center justify-center rounded-2xl border border-white/10 bg-dark/40 p-3 backdrop-blur-sm"
 			>
 				<div>
 					<div>
 						<img
-							class="rounded-lg w-full object-cover"
+							class="w-full rounded-lg object-cover grayscale"
 							src={PROFILE.avatar}
 							alt="{PROFILE.fullname} - {PROFILE.role}"
 						/>
@@ -38,10 +38,10 @@
 				</div>
 
 				<div
-					class="absolute bottom-0 w-60 h-px z-10 bg-linear-to-r from-primary/0 via-primary to-primary/0"
+					class="absolute bottom-0 z-10 h-px w-60 bg-linear-to-r from-primary/0 via-primary to-primary/0"
 				></div>
 				<div
-					class="-z-10 absolute bottom-4 w-96 bg-primary rounded-full blur-2xl h-40 animate-pulse opacity-50"
+					class="absolute bottom-4 -z-10 h-40 w-96 animate-pulse rounded-full bg-white opacity-15 blur-2xl"
 				></div>
 			</div>
 		</div>

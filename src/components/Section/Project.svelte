@@ -14,57 +14,60 @@
 			{PROJECT.subline}
 		</p>
 
-		<div class="grid md:grid-cols-2 gap-6 mt-16">
+		<div class="mt-16 grid gap-6 md:grid-cols-2">
 			{#each PROJECT.project as item}
-				<div
-					class="p-3 border bg-dark/40 backdrop-blur-sm border-white/10 rounded-2xl relative flex items-center group overflow-hidden focus:outline-none"
+				<article
+					class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-dark/40 p-3 backdrop-blur-sm focus-within:border-white/20"
 				>
-					<div class="overflow-hidden aspect-4/3 rounded-lg w-full">
+					<div class="aspect-4/3 w-full overflow-hidden rounded-lg">
 						<img
-							class="group-hover:scale-105 group-focus:scale-105 transition-all duration-500 w-full h-full object-cover"
+							class="h-full w-full object-cover transition-all duration-500 group-focus-within:scale-105 group-hover:scale-105"
 							src="/images/work/{item.thumbnails}"
 							alt="Thumbnail {item.name}"
 						/>
 					</div>
 
 					<div
-						class="absolute bottom-6 scale-90 opacity-0 group-hover:scale-100 group-focus:scale-100 group-hover:opacity-100 group-focus:opacity-100 inset-x-6 bg-linear-to-t from-dark to-dark/90 backdrop-blur-md transition-all duration-500 rounded-xl overflow-hidden p-4 border border-white/10"
+						class="mt-3 rounded-xl border border-white/10 bg-linear-to-t from-dark to-dark/90 p-4 transition-all duration-500 md:absolute md:inset-x-6 md:bottom-6 md:mt-0 md:scale-90 md:overflow-hidden md:opacity-0 md:backdrop-blur-md md:group-focus-within:scale-100 md:group-focus-within:opacity-100 md:group-hover:scale-100 md:group-hover:opacity-100"
 					>
 						<div>
 							<div class="flex items-center justify-between">
 								<div>
-									<h3 class="text-white text-lg lg:text-xl tracking-wide font-bold">
+									<h3 class="text-lg font-bold tracking-wide text-white lg:text-xl">
 										{item.name}
 									</h3>
-									<p class="font-medium uppercase tracking-wide text-white/60 text-sm mt-1">
+									<p class="mt-1 text-sm font-medium tracking-wide text-white/60 uppercase">
 										{item.type}
 									</p>
 								</div>
 
-								<a
-									href={item.live_demo}
-									target="_blank"
-									rel="noopener noreferrer"
-									class="text-white/50 hover:text-primary transition-colors"
-								>
-									<SquareArrowOutUpRight size={24} strokeWidth={1.5} />
-								</a>
+								{#if item.live_demo !== '#'}
+									<a
+										href={item.live_demo}
+										target="_blank"
+										rel="noopener noreferrer"
+										aria-label="Open {item.name} live demo"
+										class="text-white/50 transition-colors hover:text-primary"
+									>
+										<SquareArrowOutUpRight size={24} strokeWidth={1.5} />
+									</a>
+								{/if}
 							</div>
 
 							<div
-								class="bg-linear-to-r w-44 h-px from-transparent via-primary to-transparent my-3"
+								class="my-3 h-px w-44 bg-linear-to-r from-transparent via-primary to-transparent"
 							></div>
 
-							<p class="paragraph text-white/60 text-sm">
+							<p class="paragraph text-sm text-white/60">
 								{item.description}
 							</p>
 						</div>
 					</div>
 
 					<div
-						class="absolute bottom-0 left-1/2 -translate-x-1/2 w-60 h-px z-10 bg-linear-to-r from-primary/0 via-primary to-primary/0"
+						class="absolute bottom-0 left-1/2 z-10 h-px w-60 -translate-x-1/2 bg-linear-to-r from-primary/0 via-primary to-primary/0"
 					></div>
-				</div>
+				</article>
 			{/each}
 		</div>
 	</section>

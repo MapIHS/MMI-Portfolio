@@ -1,7 +1,8 @@
 export const NAVLINKS = [
 	{ label: 'Home', url: '#hero' },
 	{ label: 'About', url: '#about' },
-	{ label: 'Projects', url: '#work' }
+	{ label: 'Projects', url: '#work' },
+	{ label: 'Contact', url: '#contact' }
 ];
 
 export const PROFILE = {
@@ -31,7 +32,7 @@ export const PROJECT = {
 			live_demo: '#',
 			description: 'Aplikasi Baca Anime, Komik, Manga',
 			thumbnails: 'otakutoon.webp',
-			type: 'Entertaiment'
+			type: 'Entertainment'
 		},
 		{
 			name: 'Conito App',
@@ -39,13 +40,12 @@ export const PROJECT = {
 			description:
 				'Free Manhwa and Manhua Reading App Without Ads With more than 50+ Languages available. Conito offers a seamless reading experience with a vast collection of comics from various genres and languages.',
 			thumbnails: 'conito-app.webp',
-			type: 'Entertaiment'
+			type: 'Entertainment'
 		},
 		{
 			name: 'IMoney',
 			live_demo: '#',
-			description:
-				'Managed MOney',
+			description: 'Manage money and track daily budgets.',
 			thumbnails: 'imoney.webp',
 			type: 'Practice'
 		}
@@ -59,4 +59,11 @@ export const ABOUT = {
 		'I believe the best way to learn is by doing. I may not stick to one tool forever, but I adapt quickly to whatever the project needs.',
 		'Currently focusing on writing clean code and understanding core concepts.'
 	]
+};
+
+export const CONTACT = {
+	label: 'Contact',
+	headline: "Let's build something useful.",
+	subline:
+		'I am open to collaboration, feedback, and small Flutter projects that help me keep learning by doing.'
 };
