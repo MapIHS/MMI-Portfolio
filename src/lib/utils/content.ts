@@ -50,6 +50,13 @@ export const PROJECT = {
 			type: 'Practice'
 		},
 		{
+			name: 'Foxnime',
+			live_demo: '#',
+			description: 'Aplikasi untuk streaming anime gratis dengan koleksi yang cukup lengkap.',
+			thumbnails: 'foxnime.webp',
+			type: 'Entertainment'
+		},
+		{
 			name: 'AniKyonn For Anilist',
 			live_demo: '#',
 			description: 'Aplikasi untuk mengelola daftar anime di Anilist.',

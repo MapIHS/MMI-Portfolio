@@ -6,13 +6,27 @@
 
 <ScrollSmooth>
 	<section id="work" class="container">
-		<p class="badge">{PROJECT.label}</p>
-		<h2 class="section-title">
-			{PROJECT.headline}
-		</h2>
-		<p class="paragraph mt-4 max-w-xl">
-			{PROJECT.subline}
-		</p>
+		<div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+			<div>
+				<p class="badge">{PROJECT.label}</p>
+				<h2 class="section-title">
+					{PROJECT.headline}
+				</h2>
+				<p class="paragraph mt-4 max-w-xl">
+					{PROJECT.subline}
+				</p>
+			</div>
+
+			<div
+				class="flex w-fit items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-white"
+				aria-label="{PROJECT.project.length} projects"
+			>
+				<span class="text-2xl font-semibold tabular-nums">
+					{String(PROJECT.project.length).padStart(2, '0')}
+				</span>
+				<span class="text-xs font-medium tracking-wide text-white/50 uppercase">Projects</span>
+			</div>
+		</div>
 
 		<div class="mt-16 grid gap-6 md:grid-cols-2">
 			{#each PROJECT.project as item}
@@ -31,7 +45,7 @@
 						class="mt-3 rounded-xl border border-white/10 bg-linear-to-t from-dark to-dark/90 p-4 transition-all duration-500 md:absolute md:inset-x-6 md:bottom-6 md:mt-0 md:scale-90 md:overflow-hidden md:opacity-0 md:backdrop-blur-md md:group-focus-within:scale-100 md:group-focus-within:opacity-100 md:group-hover:scale-100 md:group-hover:opacity-100"
 					>
 						<div>
-							<div class="flex items-center justify-between">
+							<div class="flex items-center justify-between gap-4">
 								<div>
 									<h3 class="text-lg font-bold tracking-wide text-white lg:text-xl">
 										{item.name}
