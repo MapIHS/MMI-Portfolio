@@ -3,44 +3,44 @@
 	import { HERO, PROJECT } from '$lib/utils/content';
 </script>
 
-<div id="hero" class="container relative py-40">
-	<div class="z-10 relative flex flex-col items-center">
+<div id="hero" class="relative container py-40">
+	<div class="relative z-10 flex flex-col items-center">
 		<div class="badge flex items-center gap-2">
-			<div class="animate-pulse w-2 h-2 bg-primary rounded-full"></div>
+			<div class="h-2 w-2 animate-pulse rounded-full bg-primary"></div>
 			<p class="text-center">{HERO.badge}</p>
 		</div>
 
 		<h1
-			class="max-w-4xl mx-auto text-center text-4xl md:text-5xl lg:text-6xl text-white font-bold mt-4 leading-snug!"
+			class="mx-auto mt-4 max-w-4xl text-center text-4xl leading-snug! font-bold text-white md:text-5xl lg:text-6xl"
 		>
 			{HERO.headline}
 		</h1>
 
-		<p class="paragraph mt-4 text-center max-w-xl mx-auto">
+		<p class="paragraph mx-auto mt-4 max-w-xl text-center">
 			{HERO.subline}
 		</p>
 
-		<div class="flex gap-4 items-center mt-8">
+		<div class="mt-8 flex items-center gap-4">
 			<Button label="View Project" to="#work" />
 			<Button label="Contact Me" to="#contact" variant="btn-dark" />
 		</div>
 	</div>
 
-	<div class="w-full inline-flex flex-nowrap relative overflow-hidden mt-16">
+	<div class="relative mt-16 inline-flex w-full flex-nowrap overflow-hidden">
 		<div
-			class="h-full w-24 bg-linear-to-r from-dark to-transparent left-0 inset-y-0 absolute z-10"
+			class="absolute inset-y-0 left-0 z-10 h-full w-24 bg-linear-to-r from-dark to-transparent"
 		></div>
 		<div
-			class="h-full w-24 bg-linear-to-l from-dark to-transparent right-0 inset-y-0 absolute z-10"
+			class="absolute inset-y-0 right-0 z-10 h-full w-24 bg-linear-to-l from-dark to-transparent"
 		></div>
 
 		<ul
-			class="flex items-center justify-center md:justify-start [&_li]:mx-2 [&_img]:max-w-none animate-infinite-scroll hover:animate-pause"
+			class="hover:animate-pause flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-2"
 		>
 			{#each PROJECT.project as item}
-				<li class="overflow-hidden group">
+				<li class="group overflow-hidden">
 					<img
-						class="h-[300px] rounded-xl group-hover:scale-105 group-hover:opacity-70 transition-all"
+						class="h-[300px] rounded-xl grayscale transition-all group-hover:scale-105 group-hover:opacity-70"
 						src="/images/work/{item.thumbnails}"
 						alt="Work Thumbnail"
 					/>
@@ -48,9 +48,9 @@
 			{/each}
 
 			{#each PROJECT.project as item}
-				<li class="overflow-hidden group" aria-hidden="true">
+				<li class="group overflow-hidden" aria-hidden="true">
 					<img
-						class="h-[300px] rounded-xl group-hover:scale-105 group-hover:opacity-70 transition-all"
+						class="h-[300px] rounded-xl grayscale transition-all group-hover:scale-105 group-hover:opacity-70"
 						src="/images/work/{item.thumbnails}"
 						alt="Work Thumbnail"
 					/>
@@ -59,8 +59,8 @@
 		</ul>
 	</div>
 
-	<div class="absolute -top-40 right-40 rotate-45 w-14 h-[800px] bg-blue-700 blur-[100px]"></div>
-	<div class="absolute top-0 left-0 w-screen h-screen index-bg">
+	<div class="absolute -top-40 right-40 h-[800px] w-14 rotate-45 bg-white/10 blur-[100px]"></div>
+	<div class="index-bg absolute top-0 left-0 h-screen w-screen">
 		<div class="h-0">
 			<div class="star"></div>
 			<div class="star" style="top: 80px; left: 800px; animation-delay: 3s;"></div>

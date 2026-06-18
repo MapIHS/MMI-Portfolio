@@ -1,73 +1,113 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { BriefcaseBusiness, House, Mail, UserRound } from 'lucide-svelte';
 	import { NAVLINKS } from '$lib/utils/content';
-	import Button from '../Button.svelte';
 
-	let isActive = false;
+	const ICONS = {
+		Home: House,
+		About: UserRound,
+		Projects: BriefcaseBusiness,
+		Contact: Mail
+	};
 
-	function navActive() {
-		isActive = !isActive;
+	const navItems = NAVLINKS.map((link) => ({
+		...link,
+		icon: ICONS[link.label as keyof typeof ICONS] ?? House
+	}));
+
+	let activeUrl = $state(navItems[0]?.url ?? '#hero');
+	let isVisible = $state(true);
+	let lastScrollY = $state(0);
+	let ticking = $state(false);
+
+	function setActive(url: string) {
+		activeUrl = url;
+		isVisible = true;
 	}
+
+	function handleScroll() {
+		if (ticking) return;
+
+		window.requestAnimationFrame(() => {
+			const currentScrollY = window.scrollY;
+
+			if (currentScrollY < 20) {
+				isVisible = true;
+			} else if (currentScrollY > lastScrollY + 8 && currentScrollY > 180) {
+				isVisible = false;
+			} else if (currentScrollY < lastScrollY - 8) {
+				isVisible = true;
+			}
+
+			lastScrollY = currentScrollY;
+			ticking = false;
+		});
+
+		ticking = true;
+	}
+
+	onMount(() => {
+		const updateFromHash = () => {
+			activeUrl = window.location.hash || navItems[0]?.url || '#hero';
+		};
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						activeUrl = `#${entry.target.id}`;
+					}
+				}
+			},
+			{
+				rootMargin: '-35% 0px -55% 0px',
+				threshold: 0.01
+			}
+		);
+
+		updateFromHash();
+		lastScrollY = window.scrollY;
+		window.addEventListener('hashchange', updateFromHash);
+		window.addEventListener('scroll', handleScroll, { passive: true });
+
+		for (const item of navItems) {
+			const section = document.querySelector(item.url);
+			if (section) observer.observe(section);
+		}
+
+		return () => {
+			observer.disconnect();
+			window.removeEventListener('hashchange', updateFromHash);
+			window.removeEventListener('scroll', handleScroll);
+		};
+	});
 </script>
 
-<header class="max-w-[1480px] px-4 mx-auto fixed inset-x-0 top-0 mt-4 lg:mt-10 z-50">
-	<div class="flex items-center justify-between">
-		<div></div>
-
-		<div
-			class="{isActive
-				? 'opacity-100 translate-y-1 lg:opacity-100 lg:pointer-events-auto'
-				: 'opacity-0 pointer-events-none lg:pointer-events-auto lg:opacity-100'} absolute top-16 inset-x-4 lg:inset-0 lg:relative overflow-hidden flex flex-col lg:flex-row rounded-3xl gap-8 items-center lg:rounded-full px-7 py-8 lg:py-3 border border-white/10 bg-gradient-to-b from-black/60 to-black/40 backdrop-blur-md transition-all duration-300"
-		>
-			<div
-				class="w-full h-4 bg-blue-300/60 blur-lg absolute top-0 inset-x-0 rounded-full group-hover:h-1/2 transition-all duration-500"
-			></div>
-
-			{#each NAVLINKS as link}
-				<a class="text-white group text-xl lg:text-base" href={link.url}>
-					<div class="relative overflow-hidden">
-						<p class="group-hover:-translate-y-7 duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]">
-							{link.label}
-						</p>
-						<p
-							class="absolute top-7 left-0 group-hover:top-0 duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
-						>
-							{link.label}
-						</p>
-					</div>
-				</a>
-			{/each}
-
-			<a class="lg:hidden text-white group text-xl lg:text-base" href="#contact">
-				<div class="relative overflow-hidden">
-					<p class="group-hover:-translate-y-7 duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]">
-						Connect Me
-					</p>
-					<p
-						class="absolute top-7 left-0 group-hover:top-0 duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]"
-					>
-						Connect Me
-					</p>
-				</div>
+<nav
+	aria-label="Primary navigation"
+	class="{isVisible
+		? 'translate-y-0 opacity-100'
+		: 'translate-y-[calc(100%+1.5rem)] opacity-0'} fixed inset-x-0 bottom-4 z-[60] flex justify-center px-4 pb-[env(safe-area-inset-bottom)] transition-all duration-300 ease-out"
+>
+	<div
+		class="flex w-full max-w-md items-center justify-between gap-1 rounded-full border border-white/10 bg-black/70 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl sm:w-auto sm:justify-center sm:gap-2"
+	>
+		{#each navItems as item}
+			{@const active = activeUrl === item.url}
+			<a
+				href={item.url}
+				aria-label={item.label}
+				aria-current={active ? 'page' : undefined}
+				onclick={() => setActive(item.url)}
+				class="{active
+					? 'bg-white text-black shadow-lg shadow-white/10'
+					: 'text-white/55 hover:bg-white/10 hover:text-white'} group flex h-12 min-w-12 items-center justify-center rounded-full px-3 transition-all duration-200 sm:gap-2 sm:px-4"
+			>
+				<item.icon size={20} strokeWidth={1.8} />
+				<span class="{active ? 'inline' : 'hidden'} text-sm font-medium sm:inline">
+					{item.label}
+				</span>
 			</a>
-		</div>
-
-		<div>
-			<div class="hidden lg:block">
-				<Button
-					class="rounded-full shadow-none"
-					label="Connect Me"
-					to="#contact"
-					variant="btn-dark"
-				/>
-			</div>
-
-			<button on:click={navActive} class="lg:hidden btn-dark px-4 py-2 rounded-full group">
-				<img
-					class="group-focus:scale-100 group-hover:scale-110 transition-all"
-					src={isActive ? '/svg/ic-close.svg' : '/svg/ic-hamburger.svg'}
-					alt="menu"
-				/>
-			</button>
-		</div>
+		{/each}
 	</div>
-</header>
+</nav>

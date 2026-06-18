@@ -13,17 +13,18 @@
 	onMount(() => {
 		gsap.registerPlugin(ScrollTrigger);
 		const lenis = new Lenis();
+		const updateLenis = (time: number) => {
+			lenis.raf(time * 1000);
+		};
 
 		lenis.on('scroll', ScrollTrigger.update);
 
-		gsap.ticker.add((time) => {
-			lenis.raf(time * 1000);
-		});
+		gsap.ticker.add(updateLenis);
 		gsap.ticker.lagSmoothing(0);
 
 		return () => {
 			lenis.destroy();
-			gsap.ticker.remove(lenis.raf);
+			gsap.ticker.remove(updateLenis);
 		};
 	});
 </script>
@@ -34,10 +35,10 @@
 
 <Navbar />
 
-<main class="overflow-hidden relative">
+<main class="relative overflow-hidden">
 	{@render children()}
 
 	<div
-		class="bg-linear-to-t from-dark to-transparent fixed bottom-0 inset-x-0 h-24 z-50 pointer-events-none"
+		class="pointer-events-none fixed inset-x-0 bottom-0 z-40 h-24 bg-linear-to-t from-dark to-transparent"
 	></div>
 </main>
