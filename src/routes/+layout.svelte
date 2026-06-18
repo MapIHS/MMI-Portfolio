@@ -5,7 +5,7 @@
 	import Lenis from '@studio-freight/lenis';
 
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.svg';
+	import favicon from '$lib/assets/favicon.webp';
 	import Navbar from '../components/Layout/Navbar.svelte';
 
 	let { children } = $props();

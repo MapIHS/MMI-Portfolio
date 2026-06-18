@@ -48,6 +48,13 @@ export const PROJECT = {
 			description: 'Manage money and track daily budgets.',
 			thumbnails: 'imoney.webp',
 			type: 'Practice'
+		},
+		{
+			name: 'AniKyonn For Anilist',
+			live_demo: '#',
+			description: 'Aplikasi untuk mengelola daftar anime di Anilist.',
+			thumbnails: 'anikyonn.webp',
+			type: 'Entertainment'
 		}
 	]
 };
