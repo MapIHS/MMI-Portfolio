@@ -49,14 +49,18 @@
 		></div>
 
 		<ul
+			aria-label="Project previews"
 			class="hover:animate-pause flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-2"
 		>
 			{#each PROJECT.project as item}
 				<li class="group overflow-hidden">
 					<img
-						class="h-[300px] rounded-xl grayscale transition-all group-hover:scale-105 group-hover:opacity-70"
+						class="h-[300px] w-auto rounded-xl grayscale transition-[transform,opacity] group-hover:scale-105 group-hover:opacity-70"
 						src="/images/work/{item.thumbnails}"
-						alt="Work Thumbnail"
+						alt="{item.name} project preview"
+						width="640"
+						height="480"
+						decoding="async"
 					/>
 				</li>
 			{/each}
@@ -64,17 +68,24 @@
 			{#each PROJECT.project as item}
 				<li class="group overflow-hidden" aria-hidden="true">
 					<img
-						class="h-[300px] rounded-xl grayscale transition-all group-hover:scale-105 group-hover:opacity-70"
+						class="h-[300px] w-auto rounded-xl grayscale transition-[transform,opacity] group-hover:scale-105 group-hover:opacity-70"
 						src="/images/work/{item.thumbnails}"
-						alt="Work Thumbnail"
+						alt=""
+						width="640"
+						height="480"
+						loading="lazy"
+						decoding="async"
 					/>
 				</li>
 			{/each}
 		</ul>
 	</div>
 
-	<div class="absolute -top-40 right-40 h-[800px] w-14 rotate-45 bg-white/10 blur-[100px]"></div>
-	<div class="index-bg absolute top-0 left-0 h-screen w-screen">
+	<div
+		aria-hidden="true"
+		class="absolute -top-40 right-40 h-[800px] w-14 rotate-45 bg-white/10 blur-[100px]"
+	></div>
+	<div aria-hidden="true" class="index-bg absolute top-0 left-0 h-screen w-screen">
 		<div class="h-0">
 			<div class="star"></div>
 			<div class="star" style="top: 80px; left: 800px; animation-delay: 3s;"></div>
@@ -88,20 +99,6 @@
 </div>
 
 <style>
-	@-webkit-keyframes star-opacity {
-		0% {
-			opacity: 0;
-		}
-		40% {
-			opacity: 1;
-		}
-		60% {
-			opacity: 1;
-		}
-		100% {
-			opacity: 0;
-		}
-	}
 	@keyframes star-opacity {
 		0% {
 			opacity: 0;
@@ -114,14 +111,6 @@
 		}
 		100% {
 			opacity: 0;
-		}
-	}
-	@-webkit-keyframes star-pos {
-		0% {
-			transform: scale(0) rotate(0) translate3d(0, 0, 0);
-		}
-		100% {
-			transform: scale(1) rotate(0) translate3d(-450px, 450px, 0);
 		}
 	}
 	@keyframes star-pos {

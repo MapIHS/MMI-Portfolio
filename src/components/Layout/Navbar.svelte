@@ -17,12 +17,26 @@
 
 	let activeUrl = $state(navItems[0]?.url ?? '#hero');
 	let isVisible = $state(true);
+	let isNavigating = $state(false);
 	let lastScrollY = $state(0);
 	let ticking = $state(false);
+	let navigationTimer: ReturnType<typeof setTimeout> | undefined;
+
+	function finishNavigation() {
+		isNavigating = false;
+		lastScrollY = window.scrollY;
+	}
+
+	function scheduleNavigationEnd(delay = 180) {
+		if (navigationTimer) clearTimeout(navigationTimer);
+		navigationTimer = setTimeout(finishNavigation, delay);
+	}
 
 	function setActive(url: string) {
 		activeUrl = url;
 		isVisible = true;
+		isNavigating = true;
+		scheduleNavigationEnd(800);
 	}
 
 	function handleScroll() {
@@ -31,7 +45,10 @@
 		window.requestAnimationFrame(() => {
 			const currentScrollY = window.scrollY;
 
-			if (currentScrollY < 20) {
+			if (isNavigating) {
+				isVisible = true;
+				scheduleNavigationEnd();
+			} else if (currentScrollY < 20) {
 				isVisible = true;
 			} else if (currentScrollY > lastScrollY + 8 && currentScrollY > 180) {
 				isVisible = false;
@@ -76,6 +93,7 @@
 		}
 
 		return () => {
+			if (navigationTimer) clearTimeout(navigationTimer);
 			observer.disconnect();
 			window.removeEventListener('hashchange', updateFromHash);
 			window.removeEventListener('scroll', handleScroll);
@@ -87,7 +105,7 @@
 	aria-label="Primary navigation"
 	class="{isVisible
 		? 'translate-y-0 opacity-100'
-		: 'translate-y-[calc(100%+1.5rem)] opacity-0'} fixed inset-x-0 bottom-4 z-[60] flex justify-center px-4 pb-[env(safe-area-inset-bottom)] transition-all duration-300 ease-out"
+		: 'translate-y-[calc(100%+1.5rem)] opacity-0'} fixed inset-x-0 bottom-4 z-[60] flex justify-center px-4 pb-[env(safe-area-inset-bottom)] transition-[transform,opacity] duration-300 ease-out"
 >
 	<div
 		class="flex w-full max-w-md items-center justify-between gap-1 rounded-full border border-white/10 bg-black/70 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl sm:w-auto sm:justify-center sm:gap-2"

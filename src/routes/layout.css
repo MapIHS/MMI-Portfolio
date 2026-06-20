@@ -1,7 +1,5 @@
 /* 1. IMPORT TAILWIND V4 & PLUGINS */
 @import 'tailwindcss';
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
 
 /* 2. THEME CONFIGURATION */
 @theme {
@@ -100,20 +98,6 @@
 	.btn-dark {
 		@apply rounded-lg border border-white/10 bg-gradient-to-b from-zinc-950 to-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:border-white/30 focus:border-white/30;
 	}
-
-	/* Card component */
-	.card {
-		@apply flex flex-col rounded-2xl border border-white/10 bg-zinc-950/90 p-3 backdrop-blur-sm transition-all duration-300 hover:border-white/20;
-	}
-
-	/* Navigation */
-	.nav-link {
-		@apply text-white/70 transition-colors duration-200 hover:text-white focus:text-white;
-	}
-
-	.nav-link.active {
-		@apply text-white;
-	}
 }
 
 /* 6. UTILITY CLASSES */
@@ -131,121 +115,9 @@
 	.animate-pause {
 		animation-play-state: paused;
 	}
-
-	.animate-play {
-		animation-play-state: running;
-	}
-
-	/* Gradients */
-	.text-gradient {
-		@apply bg-gradient-to-r from-white to-zinc-400 bg-clip-text text-transparent;
-	}
-
-	/* Layout */
-	.flex-center {
-		@apply flex items-center justify-center;
-	}
-
-	.absolute-center {
-		@apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
-	}
 }
 
-/* 7. CUSTOM STYLES */
-/* Mesh background */
-.mesh-gradient {
-	background-image:
-		radial-gradient(at 9% 71%, hsla(0, 0%, 24%, 0.7) 0px, transparent 50%),
-		radial-gradient(at 97% 40%, hsla(0, 0%, 38%, 0.55) 0px, transparent 50%);
-}
-
-/* Fade animations */
-.animate-fade {
-	opacity: 1;
-	transform: translateY(0);
-	transition: all 0.6s ease;
-}
-
-.animate-fade-up {
-	opacity: 0;
-	transform: translateY(20px);
-	transition: all 0.6s ease;
-}
-
-/* Logo styles - Optimized for dark background */
-.logo {
-	font-weight: 700;
-	font-size: 1.5rem;
-	background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 50%, #525252 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	filter: brightness(1.1);
-}
-
-/* Alternative logo variations for different contexts */
-
-/* Brighter version for better visibility */
-.logo-bright {
-	font-weight: 700;
-	font-size: 1.5rem;
-	background: linear-gradient(135deg, #ffffff 0%, #d4d4d4 50%, #737373 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-}
-
-/* High contrast version */
-.logo-contrast {
-	font-weight: 700;
-	font-size: 1.5rem;
-	background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-}
-
-/* Simple primary color version */
-.logo-simple {
-	font-weight: 700;
-	font-size: 1.5rem;
-	color: var(--color-primary);
-	/* Fallback for older browsers */
-	background: none;
-	-webkit-text-fill-color: initial;
-}
-
-/* 8. LENIS SMOOTH SCROLL */
-html.lenis {
-	height: auto;
-}
-
-.lenis.lenis-smooth {
-	scroll-behavior: auto;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-	overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-	overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-	pointer-events: none;
-}
-
-/* 9. DARK MODE SUPPORT */
-@media (prefers-color-scheme: dark) {
-	.dark\:mesh-gradient {
-		background-image:
-			radial-gradient(at 9% 71%, hsla(0, 0%, 16%, 0.75) 0px, transparent 50%),
-			radial-gradient(at 97% 40%, hsla(0, 0%, 32%, 0.5) 0px, transparent 50%);
-	}
-}
-
-/* 10. ACCESSIBILITY */
+/* 7. ACCESSIBILITY */
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,

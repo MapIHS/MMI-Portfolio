@@ -1,35 +1,40 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import gsap from 'gsap';
-	import ScrollTrigger from 'gsap/ScrollTrigger';
-	import Lenis from '@studio-freight/lenis';
+	import Lenis from 'lenis';
+	import 'lenis/dist/lenis.css';
 
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.webp';
+	import { HERO, PROFILE } from '$lib/utils/content';
 	import Navbar from '../components/Layout/Navbar.svelte';
 
 	let { children } = $props();
 
 	onMount(() => {
-		gsap.registerPlugin(ScrollTrigger);
-		const lenis = new Lenis();
-		const updateLenis = (time: number) => {
-			lenis.raf(time * 1000);
-		};
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-		lenis.on('scroll', ScrollTrigger.update);
-
-		gsap.ticker.add(updateLenis);
-		gsap.ticker.lagSmoothing(0);
+		const lenis = new Lenis({
+			anchors: true,
+			autoRaf: true
+		});
 
 		return () => {
 			lenis.destroy();
-			gsap.ticker.remove(updateLenis);
 		};
 	});
 </script>
 
 <svelte:head>
+	<title>{PROFILE.fullname} | {PROFILE.role}</title>
+	<meta name="description" content={HERO.subline} />
+	<meta name="theme-color" content="#070707" />
+	<meta name="color-scheme" content="dark" />
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="{PROFILE.fullname} | {PROFILE.role}" />
+	<meta property="og:description" content={HERO.subline} />
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:title" content="{PROFILE.fullname} | {PROFILE.role}" />
+	<meta name="twitter:description" content={HERO.subline} />
 	<link rel="icon" href={favicon} />
 </svelte:head>
 

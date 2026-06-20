@@ -27,20 +27,22 @@
 			<div
 				class="group relative flex items-center justify-center rounded-2xl border border-white/10 bg-dark/40 p-3 backdrop-blur-sm"
 			>
-				<div>
-					<div>
-						<img
-							class="w-full rounded-lg object-cover grayscale"
-							src={PROFILE.avatar}
-							alt="{PROFILE.fullname} - {PROFILE.role}"
-						/>
-					</div>
-				</div>
+				<img
+					class="w-full rounded-lg object-cover grayscale"
+					src={PROFILE.avatar}
+					alt="{PROFILE.fullname} - {PROFILE.role}"
+					width="1200"
+					height="896"
+					loading="lazy"
+					decoding="async"
+				/>
 
 				<div
+					aria-hidden="true"
 					class="absolute bottom-0 z-10 h-px w-60 bg-linear-to-r from-primary/0 via-primary to-primary/0"
 				></div>
 				<div
+					aria-hidden="true"
 					class="absolute bottom-4 -z-10 h-40 w-96 animate-pulse rounded-full bg-white opacity-15 blur-2xl"
 				></div>
 			</div>

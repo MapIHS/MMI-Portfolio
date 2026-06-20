@@ -7,6 +7,13 @@
 
 	onMount(() => {
 		if (!el) return;
+		if (
+			window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
+			!('IntersectionObserver' in window)
+		) {
+			isVisible = true;
+			return;
+		}
 
 		const observer = new IntersectionObserver(
 			(entries) => {
@@ -35,7 +42,9 @@
 	.animate-fade {
 		opacity: 1;
 		transform: translateY(0);
-		transition: all 0.9s ease;
+		transition:
+			opacity 0.9s ease,
+			transform 0.9s ease;
 	}
 
 	div {

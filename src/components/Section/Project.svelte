@@ -35,14 +35,18 @@
 				>
 					<div class="aspect-4/3 w-full overflow-hidden rounded-lg">
 						<img
-							class="h-full w-full object-cover transition-all duration-500 group-focus-within:scale-105 group-hover:scale-105"
+							class="h-full w-full object-cover transition-transform duration-500 group-focus-within:scale-105 group-hover:scale-105"
 							src="/images/work/{item.thumbnails}"
-							alt="Thumbnail {item.name}"
+							alt="{item.name} project preview"
+							width="640"
+							height="480"
+							loading="lazy"
+							decoding="async"
 						/>
 					</div>
 
 					<div
-						class="mt-3 rounded-xl border border-white/10 bg-linear-to-t from-dark to-dark/90 p-4 transition-all duration-500 md:absolute md:inset-x-6 md:bottom-6 md:mt-0 md:scale-90 md:overflow-hidden md:opacity-0 md:backdrop-blur-md md:group-focus-within:scale-100 md:group-focus-within:opacity-100 md:group-hover:scale-100 md:group-hover:opacity-100"
+						class="mt-3 rounded-xl border border-white/10 bg-linear-to-t from-dark to-dark/90 p-4 transition-[transform,opacity] duration-500 md:absolute md:inset-x-6 md:bottom-6 md:mt-0 md:scale-90 md:overflow-hidden md:opacity-0 md:backdrop-blur-md md:group-focus-within:scale-100 md:group-focus-within:opacity-100 md:group-hover:scale-100 md:group-hover:opacity-100"
 					>
 						<div>
 							<div class="flex items-center justify-between gap-4">
@@ -79,6 +83,7 @@
 					</div>
 
 					<div
+						aria-hidden="true"
 						class="absolute bottom-0 left-1/2 z-10 h-px w-60 -translate-x-1/2 bg-linear-to-r from-primary/0 via-primary to-primary/0"
 					></div>
 				</article>
