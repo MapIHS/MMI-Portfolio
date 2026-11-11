@@ -1,43 +1,47 @@
 <script lang="ts">
 	import { SquareArrowOutUpRight } from 'lucide-svelte';
 	import ScrollSmooth from '../Layout/ScrollSmooth.svelte';
-	import { PROJECT } from '$lib/utils/content';
+	import { PROJECTS, type Project } from '$lib/data/projects';
+	import { PROJECTS_COPY } from '$lib/data/profile';
+
+	const primaryLink = (item: Project) =>
+		item.links.demo ?? item.links.playstore ?? item.links.github;
 </script>
 
 <ScrollSmooth>
 	<section id="work" class="container">
 		<div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
 			<div>
-				<p class="badge">{PROJECT.label}</p>
+				<p class="badge">{PROJECTS_COPY.label}</p>
 				<h2 class="section-title">
-					{PROJECT.headline}
+					{PROJECTS_COPY.headline}
 				</h2>
 				<p class="paragraph mt-4 max-w-xl">
-					{PROJECT.subline}
+					{PROJECTS_COPY.subline}
 				</p>
 			</div>
 
 			<div
 				class="flex w-fit items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-white"
-				aria-label="{PROJECT.project.length} projects"
+				aria-label="{PROJECTS.length} projects"
 			>
 				<span class="text-2xl font-semibold tabular-nums">
-					{String(PROJECT.project.length).padStart(2, '0')}
+					{String(PROJECTS.length).padStart(2, '0')}
 				</span>
 				<span class="text-xs font-medium tracking-wide text-white/50 uppercase">Projects</span>
 			</div>
 		</div>
 
 		<div class="mt-16 grid gap-6 md:grid-cols-2">
-			{#each PROJECT.project as item (item.name)}
+			{#each PROJECTS as item (item.slug)}
 				<article
 					class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-dark/40 p-3 backdrop-blur-sm focus-within:border-white/20"
 				>
 					<div class="aspect-4/3 w-full overflow-hidden rounded-lg">
 						<img
 							class="h-full w-full object-cover transition-transform duration-500 group-focus-within:scale-105 group-hover:scale-105"
-							src="/images/work/{item.thumbnails}"
-							alt="{item.name} project preview"
+							src={item.image}
+							alt={item.imageAlt}
 							width="640"
 							height="480"
 							loading="lazy"
@@ -52,19 +56,19 @@
 							<div class="flex items-center justify-between gap-4">
 								<div>
 									<h3 class="text-lg font-bold tracking-wide text-white lg:text-xl">
-										{item.name}
+										{item.title}
 									</h3>
 									<p class="mt-1 text-sm font-medium tracking-wide text-white/60 uppercase">
-										{item.type}
+										{item.category}
 									</p>
 								</div>
 
-								{#if item.live_demo !== '#'}
+								{#if primaryLink(item)}
 									<a
-										href={item.live_demo}
+										href={primaryLink(item)}
 										target="_blank"
 										rel="noopener noreferrer"
-										aria-label="Open {item.name} live demo"
+										aria-label="Open {item.title}"
 										class="text-white/50 transition-colors hover:text-primary"
 									>
 										<SquareArrowOutUpRight size={24} strokeWidth={1.5} />

@@ -5,7 +5,7 @@
 
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.webp';
-	import { HERO, PROFILE } from '$lib/utils/content';
+	import { HERO, PROFILE } from '$lib/data/profile';
 	import Navbar from '../components/Layout/Navbar.svelte';
 
 	let { children } = $props();
@@ -43,15 +43,15 @@
 </script>
 
 <svelte:head>
-	<title>{PROFILE.fullname} | {PROFILE.role}</title>
+	<title>{PROFILE.fullName} | {PROFILE.role}</title>
 	<meta name="description" content={HERO.subline} />
 	<meta name="theme-color" content="#070707" />
 	<meta name="color-scheme" content="dark" />
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{PROFILE.fullname} | {PROFILE.role}" />
+	<meta property="og:title" content="{PROFILE.fullName} | {PROFILE.role}" />
 	<meta property="og:description" content={HERO.subline} />
 	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="{PROFILE.fullname} | {PROFILE.role}" />
+	<meta name="twitter:title" content="{PROFILE.fullName} | {PROFILE.role}" />
 	<meta name="twitter:description" content={HERO.subline} />
 	<link rel="icon" href={favicon} />
 </svelte:head>

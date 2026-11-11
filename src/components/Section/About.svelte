@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Button from '../Button.svelte';
 	import ScrollSmooth from '../Layout/ScrollSmooth.svelte';
-	import { ABOUT, PROFILE } from '$lib/utils/content';
+	import { ABOUT, PROFILE } from '$lib/data/profile';
 </script>
 
 <ScrollSmooth>
@@ -10,7 +10,7 @@
 			<div>
 				<p class="badge">{ABOUT.label}</p>
 				<h2 class="section-title">
-					{PROFILE.fullname}
+					{PROFILE.fullName}
 				</h2>
 
 				{#each ABOUT.introduce as intro (intro)}
@@ -20,7 +20,7 @@
 				{/each}
 
 				<div class="mt-8">
-					<Button label="Connect Me" to="#contact" variant="btn-dark" />
+					<Button label="Contact Me" to="#contact" variant="btn-dark" />
 				</div>
 			</div>
 
@@ -30,7 +30,7 @@
 				<img
 					class="w-full rounded-lg object-cover grayscale"
 					src={PROFILE.avatar}
-					alt="{PROFILE.fullname} - {PROFILE.role}"
+					alt="{PROFILE.fullName} - {PROFILE.role}"
 					width="1200"
 					height="896"
 					loading="lazy"

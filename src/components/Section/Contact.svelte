@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CONTACT } from '$lib/utils/content';
+	import { CONTACT } from '$lib/data/profile';
 	import ScrollSmooth from '../Layout/ScrollSmooth.svelte';
 </script>
 

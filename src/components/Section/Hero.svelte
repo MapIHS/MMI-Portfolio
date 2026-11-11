@@ -1,7 +1,8 @@
 <script lang="ts">
 	import { Github } from 'lucide-svelte';
 	import Button from '../Button.svelte';
-	import { HERO, PROFILE, PROJECT } from '$lib/utils/content';
+	import { GITHUB, HERO } from '$lib/data/profile';
+	import { PROJECTS } from '$lib/data/projects';
 </script>
 
 <div id="hero" class="relative container py-40">
@@ -25,7 +26,7 @@
 			<Button label="View Project" to="#work" />
 			<Button label="Contact Me" to="#contact" variant="btn-dark" />
 			<a
-				href={PROFILE.github}
+				href={GITHUB.url}
 				target="_blank"
 				rel="noopener noreferrer"
 				aria-label="Open GitHub profile"
@@ -52,12 +53,12 @@
 			aria-label="Project previews"
 			class="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-2"
 		>
-			{#each PROJECT.project as item (item.name)}
+			{#each PROJECTS as item (item.slug)}
 				<li class="group overflow-hidden">
 					<img
 						class="h-[300px] w-auto rounded-xl grayscale transition-[transform,opacity] group-hover:scale-105 group-hover:opacity-70"
-						src="/images/work/{item.thumbnails}"
-						alt="{item.name} project preview"
+						src={item.image}
+						alt={item.imageAlt}
 						width="640"
 						height="480"
 						decoding="async"
@@ -65,11 +66,11 @@
 				</li>
 			{/each}
 
-			{#each PROJECT.project as item (item.name)}
+			{#each PROJECTS as item (item.slug)}
 				<li class="group overflow-hidden" aria-hidden="true">
 					<img
 						class="h-[300px] w-auto rounded-xl grayscale transition-[transform,opacity] group-hover:scale-105 group-hover:opacity-70"
-						src="/images/work/{item.thumbnails}"
+						src={item.image}
 						alt=""
 						width="640"
 						height="480"

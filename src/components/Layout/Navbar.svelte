@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { BriefcaseBusiness, House, Mail, UserRound } from 'lucide-svelte';
-	import { NAVLINKS } from '$lib/utils/content';
+	import { NAV_LINKS } from '$lib/data/site';
 
 	const ICONS = {
 		Home: House,
@@ -10,12 +10,12 @@
 		Contact: Mail
 	};
 
-	const navItems = NAVLINKS.map((link) => ({
+	const navItems = NAV_LINKS.map((link) => ({
 		...link,
 		icon: ICONS[link.label as keyof typeof ICONS] ?? House
 	}));
 
-	let activeUrl = $state(navItems[0]?.url ?? '#hero');
+	let activeUrl = $state<string>(navItems[0]?.url ?? '#hero');
 	let isVisible = $state(true);
 	let isNavigating = $state(false);
 	let lastScrollY = $state(0);
