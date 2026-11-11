@@ -52,6 +52,7 @@
 	<meta name="theme-color" content="#070707" />
 	<meta name="color-scheme" content="dark" />
 	<link rel="icon" href="/favicon.ico" sizes="32x32" />
+	<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
 	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 	<link rel="manifest" href="/site.webmanifest" />
