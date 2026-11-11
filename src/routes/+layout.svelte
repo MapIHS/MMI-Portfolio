@@ -10,8 +10,6 @@
 	import poppinsRegular from '@fontsource/poppins/files/poppins-latin-400-normal.woff2?url';
 	import poppinsBold from '@fontsource/poppins/files/poppins-latin-700-normal.woff2?url';
 	import './layout.css';
-	import favicon from '$lib/assets/favicon.webp';
-	import { HERO, PROFILE } from '$lib/data/profile';
 	import Navbar from '$lib/components/Navbar.svelte';
 
 	let { children } = $props();
@@ -49,17 +47,12 @@
 </script>
 
 <svelte:head>
-	<title>{PROFILE.fullName} | {PROFILE.role}</title>
-	<meta name="description" content={HERO.subline} />
 	<meta name="theme-color" content="#070707" />
 	<meta name="color-scheme" content="dark" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="{PROFILE.fullName} | {PROFILE.role}" />
-	<meta property="og:description" content={HERO.subline} />
-	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:title" content="{PROFILE.fullName} | {PROFILE.role}" />
-	<meta name="twitter:description" content={HERO.subline} />
-	<link rel="icon" href={favicon} />
+	<link rel="icon" href="/favicon.ico" sizes="32x32" />
+	<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+	<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+	<link rel="manifest" href="/site.webmanifest" />
 	<link rel="preload" href={poppinsRegular} as="font" type="font/woff2" crossorigin="anonymous" />
 	<link rel="preload" href={poppinsBold} as="font" type="font/woff2" crossorigin="anonymous" />
 </svelte:head>

@@ -4,7 +4,10 @@
 	import Contact from '$lib/components/Contact.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import ProjectGrid from '$lib/components/ProjectGrid.svelte';
+	import Seo from '$lib/components/Seo.svelte';
 </script>
+
+<Seo />
 
 <Hero />
 <Divider />
