@@ -17,7 +17,7 @@ Personal portfolio of Muhamad Maptuhul Ihsan, a Flutter developer who is still l
 
 ## Getting started
 
-Requires Node.js 24 and pnpm 10.
+Requires Node.js 24 and the pnpm version set in `package.json`.
 
 ```sh
 pnpm install
