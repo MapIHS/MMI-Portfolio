@@ -50,7 +50,7 @@
 
 		<ul
 			aria-label="Project previews"
-			class="hover:animate-pause flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-2"
+			class="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-2"
 		>
 			{#each PROJECT.project as item}
 				<li class="group overflow-hidden">
@@ -138,6 +138,7 @@
 		box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.3);
 		opacity: 0;
 		z-index: 2;
+		will-change: transform, opacity;
 	}
 
 	.index-bg .star:after {

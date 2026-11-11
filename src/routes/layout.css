@@ -117,6 +117,13 @@
 	}
 }
 
+/* Carousel hover pause – only on devices with a real pointer (prevents sticky :hover on touch) */
+@media (hover: hover) {
+	.animate-infinite-scroll:hover {
+		animation-play-state: paused;
+	}
+}
+
 /* 7. ACCESSIBILITY */
 @media (prefers-reduced-motion: reduce) {
 	*,

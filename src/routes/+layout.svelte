@@ -18,8 +18,26 @@
 			autoRaf: true
 		});
 
+		// Force-restart CSS animations after browser throttles them (background tab, energy saver, etc.)
+		const restartAnimations = () => {
+			if (document.visibilityState !== 'visible') return;
+
+			const targets = document.querySelectorAll(
+				'.animate-infinite-scroll, .star, [class*="animate-pulse"]'
+			);
+			targets.forEach((el) => {
+				const htmlEl = el as HTMLElement;
+				htmlEl.style.animation = 'none';
+				void htmlEl.offsetHeight; // force reflow
+				htmlEl.style.animation = '';
+			});
+		};
+
+		document.addEventListener('visibilitychange', restartAnimations);
+
 		return () => {
 			lenis.destroy();
+			document.removeEventListener('visibilitychange', restartAnimations);
 		};
 	});
 </script>
