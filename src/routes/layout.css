@@ -3,17 +3,23 @@
 
 /* 2. THEME CONFIGURATION */
 @theme {
-	/* Color System */
+	/* Color */
 	--color-primary: #f5f5f5;
 	--color-white: #f8fafc;
 	--color-dark: #070707;
-	--color-card-bg: #111111;
+	--color-muted: #a1a1aa;
+	--color-line: rgb(255 255 255 / 0.1);
 
 	/* Typography */
-	--font-poppins: 'Poppins', sans-serif;
+	--font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
 
-	/* Breakpoints */
-	--breakpoint-2xl: 1280px;
+	/* Radius */
+	--radius-control: 0.5rem;
+	--radius-card: 1rem;
+
+	/* Spacing */
+	--spacing-section: 5rem;
+	--spacing-hero: 10rem;
 
 	/* Animations */
 	--animate-infinite-scroll: infinite-scroll 60s linear infinite;
@@ -58,12 +64,12 @@
 	}
 
 	body {
-		@apply bg-dark font-poppins text-white antialiased;
+		@apply bg-dark font-sans text-white antialiased;
 	}
 
 	/* Section spacing */
 	section {
-		@apply py-20;
+		@apply py-section;
 	}
 
 	/* Typography */
@@ -77,9 +83,12 @@
 	}
 
 	/* Focus states */
-	button:focus-visible,
-	a:focus-visible {
+	:focus-visible {
 		@apply outline-2 outline-offset-2 outline-primary;
+	}
+
+	[tabindex='-1']:focus {
+		outline: none;
 	}
 }
 
@@ -87,16 +96,39 @@
 @layer components {
 	/* Badge component */
 	.badge {
-		@apply inline-flex rounded-lg border border-white/10 bg-gradient-to-b from-white/10 to-transparent px-3 py-1 text-sm font-medium tracking-wide text-white uppercase;
+		@apply inline-flex rounded-control border border-line bg-gradient-to-b from-white/10 to-transparent px-3 py-1 text-sm font-medium tracking-wide text-white uppercase;
 	}
 
 	/* Button variants */
 	.btn-primary {
-		@apply rounded-lg bg-gradient-to-b from-white to-zinc-300 px-6 py-3 text-sm font-medium text-black transition-all duration-200 hover:shadow-lg hover:shadow-white/20 focus:shadow-lg focus:shadow-white/20;
+		@apply rounded-control bg-gradient-to-b from-white to-zinc-300 px-6 py-3 text-sm font-medium text-black transition-all duration-200 hover:shadow-lg hover:shadow-white/20 focus:shadow-lg focus:shadow-white/20;
+	}
+
+	/* The hover copy lives in CSS so it is absent from the DOM; the empty alt text keeps
+	   it out of the accessibility tree. The first declaration is for older browsers. */
+	.btn-label {
+		position: relative;
+	}
+
+	.btn-label::after {
+		content: attr(data-label);
+		content: attr(data-label) / '';
+		position: absolute;
+		top: 1.75rem;
+		left: 0;
+		white-space: nowrap;
+	}
+
+	.tag {
+		@apply rounded-full border border-line px-2.5 py-1 text-xs font-medium text-muted;
+	}
+
+	.skip-link {
+		@apply fixed top-4 left-4 z-[70] -translate-y-20 rounded-control bg-primary px-4 py-3 text-sm font-medium text-black focus:translate-y-0;
 	}
 
 	.btn-dark {
-		@apply rounded-lg border border-white/10 bg-gradient-to-b from-zinc-950 to-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:border-white/30 focus:border-white/30;
+		@apply rounded-control border border-line bg-gradient-to-b from-zinc-950 to-zinc-900 px-6 py-3 text-sm font-medium text-white transition-all duration-200 hover:border-white/30 focus:border-white/30;
 	}
 }
 
@@ -108,16 +140,24 @@
 	}
 
 	.paragraph {
-		@apply leading-relaxed tracking-wide text-white/50;
+		@apply leading-relaxed tracking-wide text-muted;
 	}
+}
 
-	/* Animation controls */
-	.animate-pause {
+/* Carousel hover pause – only on devices with a real pointer (prevents sticky :hover on touch) */
+@media (hover: hover) {
+	.animate-infinite-scroll:hover {
 		animation-play-state: paused;
 	}
 }
 
 /* 7. ACCESSIBILITY */
+html[data-motion-paused] *,
+html[data-motion-paused] *::before,
+html[data-motion-paused] *::after {
+	animation-play-state: paused !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
 	*,
 	*::before,
@@ -127,17 +167,4 @@
 		transition-duration: 0.01ms !important;
 		scroll-behavior: auto !important;
 	}
-}
-
-/* Screen reader only */
-.sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border: 0;
 }
