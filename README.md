@@ -1,38 +1,53 @@
-# sv
+# MMI Portfolio
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Personal portfolio of Muhamad Maptuhul Ihsan, a Flutter developer who is still learning by building.
 
-## Creating a project
+**Live site:** [www.mpsan.my.id](https://www.mpsan.my.id/)
 
-If you're seeing this, you've probably already done this step. Congrats!
+![Portfolio home page](docs/screenshot.webp)
 
-```sh
-# create a new project in the current directory
-npx sv create
+## Tech stack
 
-# create a new project in my-app
-npx sv create my-app
-```
+- SvelteKit 2 and Svelte 5 (runes)
+- TypeScript
+- Tailwind CSS v4
+- Lenis for smooth scrolling
+- `@sveltejs/enhanced-img` for AVIF and WebP images
+- Deployed on Vercel with `@sveltejs/adapter-vercel`
 
-## Developing
+## Getting started
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
+Requires Node.js 24 and pnpm 10.
 
 ```sh
-npm run build
+pnpm install
+pnpm dev
 ```
 
-You can preview the production build with `npm run preview`.
+| Command        | Description                         |
+| -------------- | ----------------------------------- |
+| `pnpm dev`     | Start the development server        |
+| `pnpm build`   | Create a production build           |
+| `pnpm preview` | Preview the production build        |
+| `pnpm check`   | Run type checks with `svelte-check` |
+| `pnpm lint`    | Run Prettier and ESLint             |
+| `pnpm format`  | Format the code with Prettier       |
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+## Project structure
+
+```text
+src/
+├── lib/
+│   ├── assets/        Images processed at build time
+│   ├── components/    Page sections and shared UI
+│   └── data/          Profile, project, skill, and site content
+├── routes/
+│   ├── +layout.svelte Shared shell, fonts, and smooth scrolling
+│   ├── +layout.ts     Prerender setting
+│   ├── +page.svelte   Home page
+│   ├── +error.svelte  Error and 404 page
+│   └── layout.css     Tailwind theme tokens and global styles
+static/                Favicons, Open Graph image, robots.txt, sitemap.xml
+```
+
+To add or change a project, edit `src/lib/data/projects.ts`. A project with no links shows no buttons.
