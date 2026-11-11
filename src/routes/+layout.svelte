@@ -3,6 +3,12 @@
 	import Lenis from 'lenis';
 	import 'lenis/dist/lenis.css';
 
+	import '@fontsource/poppins/latin-400.css';
+	import '@fontsource/poppins/latin-500.css';
+	import '@fontsource/poppins/latin-600.css';
+	import '@fontsource/poppins/latin-700.css';
+	import poppinsRegular from '@fontsource/poppins/files/poppins-latin-400-normal.woff2?url';
+	import poppinsBold from '@fontsource/poppins/files/poppins-latin-700-normal.woff2?url';
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.webp';
 	import { HERO, PROFILE } from '$lib/data/profile';
@@ -54,6 +60,8 @@
 	<meta name="twitter:title" content="{PROFILE.fullName} | {PROFILE.role}" />
 	<meta name="twitter:description" content={HERO.subline} />
 	<link rel="icon" href={favicon} />
+	<link rel="preload" href={poppinsRegular} as="font" type="font/woff2" crossorigin="anonymous" />
+	<link rel="preload" href={poppinsBold} as="font" type="font/woff2" crossorigin="anonymous" />
 </svelte:head>
 
 <a href="#main" class="skip-link">Skip to content</a>

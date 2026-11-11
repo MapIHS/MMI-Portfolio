@@ -13,12 +13,11 @@
 	class="group relative flex flex-col overflow-hidden rounded-card border border-line bg-dark/40 p-3 backdrop-blur-sm focus-within:border-white/20"
 >
 	<div class="aspect-4/3 w-full overflow-hidden rounded-control">
-		<img
+		<enhanced:img
 			class="h-full w-full object-cover transition-transform duration-500 group-focus-within:scale-105 group-hover:scale-105"
 			src={project.image}
 			alt={project.imageAlt}
-			width="640"
-			height="480"
+			sizes="(min-width: 1280px) 620px, (min-width: 768px) 50vw, 100vw"
 			loading="lazy"
 			decoding="async"
 		/>

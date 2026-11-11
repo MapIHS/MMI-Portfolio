@@ -27,12 +27,11 @@
 			<div
 				class="group relative flex items-center justify-center rounded-card border border-line bg-dark/40 p-3 backdrop-blur-sm"
 			>
-				<img
+				<enhanced:img
 					class="w-full rounded-control object-cover grayscale"
 					src={PROFILE.avatar}
 					alt="{PROFILE.fullName} - {PROFILE.role}"
-					width="1200"
-					height="896"
+					sizes="(min-width: 1024px) 50vw, 100vw"
 					loading="lazy"
 					decoding="async"
 				/>

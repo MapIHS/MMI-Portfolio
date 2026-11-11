@@ -1,3 +1,11 @@
+import anikyonn from '$lib/assets/work/anikyonn.webp?w=1280;800;480&enhanced';
+import conito from '$lib/assets/work/conito-app.webp?w=640;480&enhanced';
+import foxnime from '$lib/assets/work/foxnime.webp?w=1280;800;480&enhanced';
+import imoney from '$lib/assets/work/imoney.webp?w=1280;800;480&enhanced';
+import otakuToon from '$lib/assets/work/otakutoon.webp?w=1280;800;480&enhanced';
+
+export type ProjectImage = typeof otakuToon;
+
 export type ProjectCategory = 'Entertainment' | 'Practice';
 
 export interface ProjectLinks {
@@ -12,7 +20,7 @@ export interface Project {
 	category: ProjectCategory;
 	description: string;
 	techStack: string[];
-	image: string;
+	image: ProjectImage;
 	imageAlt: string;
 	links: ProjectLinks;
 	year?: number;
@@ -27,7 +35,7 @@ export const PROJECTS: Project[] = [
 		category: 'Entertainment',
 		description: 'An app for reading anime-based comics and manga.',
 		techStack: FLUTTER_STACK,
-		image: '/images/work/otakutoon.webp',
+		image: otakuToon,
 		imageAlt:
 			'Three phone screens of Otaku Toon showing the anime home page, a comic browsing grid, and the profile settings.',
 		links: {}
@@ -38,7 +46,7 @@ export const PROJECTS: Project[] = [
 		category: 'Entertainment',
 		description: 'A free, ad-free manhwa and manhua reader available in 50+ languages.',
 		techStack: FLUTTER_STACK,
-		image: '/images/work/conito-app.webp',
+		image: conito,
 		imageAlt:
 			'Three phone screens of Conito showing popular comics, a translation language filter, and a filtered comic list.',
 		links: {}
@@ -49,7 +57,7 @@ export const PROJECTS: Project[] = [
 		category: 'Practice',
 		description: 'An app to manage money and track daily budgets.',
 		techStack: FLUTTER_STACK,
-		image: '/images/work/imoney.webp',
+		image: imoney,
 		imageAlt:
 			'Two phone screens of IMoney showing the welcome page and a balance dashboard with budget entries.',
 		links: { github: 'https://github.com/MapIHS/Flutter-IMoney' }
@@ -60,7 +68,7 @@ export const PROJECTS: Project[] = [
 		category: 'Entertainment',
 		description: 'A free anime streaming app with a broad catalog.',
 		techStack: FLUTTER_STACK,
-		image: '/images/work/foxnime.webp',
+		image: foxnime,
 		imageAlt:
 			'Three phone screens of Foxnime showing an episode player, an episode list, and the popular anime home page.',
 		links: {}
@@ -71,7 +79,7 @@ export const PROJECTS: Project[] = [
 		category: 'Entertainment',
 		description: 'An app for managing your anime lists on AniList.',
 		techStack: FLUTTER_STACK,
-		image: '/images/work/anikyonn.webp',
+		image: anikyonn,
 		imageAlt:
 			"Three phone screens of AniKyonn showing today's anime schedule, the seasonal list, and an anime detail page.",
 		links: { playstore: 'https://play.google.com/store/apps/details?id=com.ihdev.anikyonn' }

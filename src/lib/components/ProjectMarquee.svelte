@@ -2,6 +2,8 @@
 	import { Pause, Play } from 'lucide-svelte';
 	import { PROJECTS } from '$lib/data/projects';
 
+	const MARQUEE_SIZES = '(min-width: 768px) 400px, 294px';
+
 	let paused = $state(false);
 
 	$effect(() => {
@@ -25,14 +27,14 @@
 			aria-label="Project previews"
 			class="flex animate-infinite-scroll items-center justify-center motion-reduce:animate-none md:justify-start [&_img]:max-w-none [&_li]:mx-2"
 		>
-			{#each PROJECTS as item (item.slug)}
+			{#each PROJECTS as item, index (item.slug)}
 				<li class="group overflow-hidden">
-					<img
+					<enhanced:img
 						class="h-[220px] w-auto rounded-control grayscale transition-[transform,opacity] group-hover:scale-105 group-hover:opacity-70 md:h-[300px]"
 						src={item.image}
 						alt={item.imageAlt}
-						width="640"
-						height="480"
+						sizes={MARQUEE_SIZES}
+						loading={index < 3 ? 'eager' : 'lazy'}
 						decoding="async"
 					/>
 				</li>
@@ -40,12 +42,11 @@
 
 			{#each PROJECTS as item (item.slug)}
 				<li class="group overflow-hidden" aria-hidden="true">
-					<img
+					<enhanced:img
 						class="h-[220px] w-auto rounded-control grayscale transition-[transform,opacity] group-hover:scale-105 group-hover:opacity-70 md:h-[300px]"
 						src={item.image}
 						alt=""
-						width="640"
-						height="480"
+						sizes={MARQUEE_SIZES}
 						loading="lazy"
 						decoding="async"
 					/>

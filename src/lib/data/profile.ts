@@ -1,3 +1,5 @@
+import avatar from '$lib/assets/profile.webp?w=1200;800;480&enhanced';
+
 export interface Profile {
 	/** Used everywhere except the hero heading. */
 	fullName: string;
@@ -5,7 +7,7 @@ export interface Profile {
 	shortName: string;
 	role: string;
 	email: string;
-	avatar: string;
+	avatar: typeof avatar;
 }
 
 export interface SocialLink {
@@ -24,7 +26,7 @@ export const PROFILE: Profile = {
 	shortName: 'Maptuhul Ihsan',
 	role: 'Flutter Developer',
 	email: 'ihsan@mpsan.my.id',
-	avatar: '/images/profile.webp'
+	avatar
 };
 
 export const GITHUB: SocialLink = { label: 'GitHub', url: 'https://github.com/MapIHS' };
