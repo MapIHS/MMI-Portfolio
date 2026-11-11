@@ -6,7 +6,7 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.webp';
 	import { HERO, PROFILE } from '$lib/data/profile';
-	import Navbar from '../components/Layout/Navbar.svelte';
+	import Navbar from '$lib/components/Navbar.svelte';
 
 	let { children } = $props();
 

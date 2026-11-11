@@ -1,10 +1,10 @@
 <script lang="ts">
-	import Button from '../Button.svelte';
-	import ScrollSmooth from '../Layout/ScrollSmooth.svelte';
+	import Button from './Button.svelte';
+	import Reveal from './Reveal.svelte';
 	import { ABOUT, PROFILE } from '$lib/data/profile';
 </script>
 
-<ScrollSmooth>
+<Reveal>
 	<section id="about" class="container">
 		<div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 			<div>
@@ -48,4 +48,4 @@
 			</div>
 		</div>
 	</section>
-</ScrollSmooth>
+</Reveal>

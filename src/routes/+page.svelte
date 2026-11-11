@@ -1,13 +1,13 @@
-<script>
-	import Line from '../components/Layout/Line.svelte';
-	import About from '../components/Section/About.svelte';
-	import Contact from '../components/Section/Contact.svelte';
-	import Hero from '../components/Section/Hero.svelte';
-	import Project from '../components/Section/Project.svelte';
+<script lang="ts">
+	import Divider from '$lib/components/Divider.svelte';
+	import About from '$lib/components/About.svelte';
+	import Contact from '$lib/components/Contact.svelte';
+	import Hero from '$lib/components/Hero.svelte';
+	import ProjectGrid from '$lib/components/ProjectGrid.svelte';
 </script>
 
 <Hero />
-<Line />
+<Divider />
 <div class="relative">
 	<div
 		aria-hidden="true"
@@ -15,15 +15,15 @@
 	></div>
 	<About />
 </div>
-<Line />
+<Divider />
 <div class="relative">
 	<div
 		aria-hidden="true"
 		class="absolute top-0 -left-52 h-160 w-80 rounded-full bg-white/10 blur-[200px]"
 	></div>
-	<Project />
+	<ProjectGrid />
 </div>
-<Line />
+<Divider />
 <div class="relative">
 	<div
 		aria-hidden="true"

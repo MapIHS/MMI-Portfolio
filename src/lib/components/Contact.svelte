@@ -1,9 +1,9 @@
 <script lang="ts">
 	import { CONTACT } from '$lib/data/profile';
-	import ScrollSmooth from '../Layout/ScrollSmooth.svelte';
+	import Reveal from './Reveal.svelte';
 </script>
 
-<ScrollSmooth>
+<Reveal>
 	<section id="contact" class="container">
 		<div class="relative py-12 text-center">
 			<p class="badge">{CONTACT.label}</p>
@@ -19,4 +19,4 @@
 			></div>
 		</div>
 	</section>
-</ScrollSmooth>
+</Reveal>
