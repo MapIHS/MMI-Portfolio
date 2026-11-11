@@ -5,14 +5,15 @@
 	import { GITHUB, HERO } from '$lib/data/profile';
 </script>
 
-<div id="hero" class="relative container py-hero">
+<section id="hero" aria-labelledby="hero-title" class="relative container py-hero">
 	<div class="relative z-10 flex flex-col items-center">
 		<div class="badge flex items-center gap-2">
-			<div class="h-2 w-2 animate-pulse rounded-full bg-primary"></div>
+			<div aria-hidden="true" class="h-2 w-2 animate-pulse rounded-full bg-primary"></div>
 			<p class="text-center">{HERO.badge}</p>
 		</div>
 
 		<h1
+			id="hero-title"
 			class="mx-auto mt-4 max-w-4xl text-center text-4xl leading-snug! font-bold text-white md:text-5xl lg:text-6xl"
 		>
 			{HERO.headline}
@@ -23,21 +24,20 @@
 		</p>
 
 		<div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-			<Button label="View Project" to="#work" />
-			<Button label="Contact Me" to="#contact" variant="btn-dark" />
-			<a
+			<Button label="View Project" href="#work" />
+			<Button label="Contact Me" href="#contact" variant="dark" />
+			<Button
+				label={GITHUB.label}
 				href={GITHUB.url}
+				variant="dark"
 				target="_blank"
 				rel="noopener noreferrer"
-				aria-label="Open GitHub profile"
-				title="GitHub"
-				class="btn-dark group relative inline-flex size-12 items-center justify-center overflow-hidden rounded-control p-0"
+				aria-label="GitHub profile (opens in a new tab)"
 			>
-				<div
-					class="absolute inset-x-0 top-0 h-4 w-full rounded-full bg-white/20 blur-lg transition-all duration-500 group-hover:h-1/2"
-				></div>
-				<Github class="relative" size={20} strokeWidth={1.8} />
-			</a>
+				{#snippet icon()}
+					<Github class="relative" size={18} strokeWidth={1.8} aria-hidden="true" />
+				{/snippet}
+			</Button>
 		</div>
 	</div>
 
@@ -58,7 +58,7 @@
 			<div class="star" style="top: 200px; left: 1000px; animation-delay: 1s;"></div>
 		</div>
 	</div>
-</div>
+</section>
 
 <style>
 	@keyframes star-opacity {

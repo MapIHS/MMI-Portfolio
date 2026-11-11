@@ -17,9 +17,10 @@
 
 	let activeUrl = $state<string>(navItems[0]?.url ?? '#hero');
 	let isVisible = $state(true);
-	let isNavigating = $state(false);
-	let lastScrollY = $state(0);
-	let ticking = $state(false);
+	let nav: HTMLElement;
+	let isNavigating = false;
+	let lastScrollY = 0;
+	let ticking = false;
 	let navigationTimer: ReturnType<typeof setTimeout> | undefined;
 
 	function finishNavigation() {
@@ -45,7 +46,7 @@
 		window.requestAnimationFrame(() => {
 			const currentScrollY = window.scrollY;
 
-			if (isNavigating) {
+			if (isNavigating || nav.querySelector(':focus-visible')) {
 				isVisible = true;
 				scheduleNavigationEnd();
 			} else if (currentScrollY < 20) {
@@ -101,31 +102,34 @@
 	});
 </script>
 
-<nav
-	aria-label="Primary navigation"
-	class="{isVisible
-		? 'translate-y-0 opacity-100'
-		: 'translate-y-[calc(100%+1.5rem)] opacity-0'} fixed inset-x-0 bottom-4 z-[60] flex justify-center px-4 pb-[env(safe-area-inset-bottom)] transition-[transform,opacity] duration-300 ease-out"
->
-	<div
-		class="flex w-full max-w-md items-center justify-between gap-1 rounded-full border border-line bg-black/70 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl sm:w-auto sm:justify-center sm:gap-2"
+<header>
+	<nav
+		bind:this={nav}
+		aria-label="Primary navigation"
+		onfocusin={() => (isVisible = true)}
+		class="{isVisible
+			? 'translate-y-0 opacity-100'
+			: 'translate-y-[calc(100%+1.5rem)] opacity-0'} fixed inset-x-0 bottom-4 z-[60] flex justify-center px-4 pb-[env(safe-area-inset-bottom)] transition-[transform,opacity] duration-300 ease-out"
 	>
-		{#each navItems as item (item.url)}
-			{@const active = activeUrl === item.url}
-			<a
-				href={item.url}
-				aria-label={item.label}
-				aria-current={active ? 'page' : undefined}
-				onclick={() => setActive(item.url)}
-				class="{active
-					? 'bg-white text-black shadow-lg shadow-white/10'
-					: 'text-muted hover:bg-white/10 hover:text-white'} group flex h-12 min-w-12 items-center justify-center rounded-full px-3 transition-all duration-200 sm:gap-2 sm:px-4"
-			>
-				<item.icon size={20} strokeWidth={1.8} />
-				<span class="{active ? 'inline' : 'hidden'} text-sm font-medium sm:inline">
-					{item.label}
-				</span>
-			</a>
-		{/each}
-	</div>
-</nav>
+		<div
+			class="flex w-full max-w-md items-center justify-between gap-1 rounded-full border border-line bg-black/70 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl sm:w-auto sm:justify-center sm:gap-2"
+		>
+			{#each navItems as item (item.url)}
+				{@const active = activeUrl === item.url}
+				<a
+					href={item.url}
+					aria-current={active ? 'location' : undefined}
+					onclick={() => setActive(item.url)}
+					class="{active
+						? 'bg-white text-black shadow-lg shadow-white/10'
+						: 'text-muted hover:bg-white/10 hover:text-white'} group flex h-12 min-w-12 items-center justify-center rounded-full px-3 transition-all duration-200 sm:gap-2 sm:px-4"
+				>
+					<item.icon size={20} strokeWidth={1.8} aria-hidden="true" />
+					<span class="{active ? 'inline' : 'sr-only sm:not-sr-only'} text-sm font-medium">
+						{item.label}
+					</span>
+				</a>
+			{/each}
+		</div>
+	</nav>
+</header>

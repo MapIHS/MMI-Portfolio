@@ -4,12 +4,12 @@
 	import { ABOUT, PROFILE } from '$lib/data/profile';
 </script>
 
-<Reveal>
-	<section id="about" class="container">
+<section id="about" aria-labelledby="about-title" class="container">
+	<Reveal>
 		<div class="grid grid-cols-1 items-center gap-8 lg:grid-cols-2">
 			<div>
 				<p class="badge">{ABOUT.label}</p>
-				<h2 class="section-title">
+				<h2 id="about-title" class="section-title">
 					{PROFILE.fullName}
 				</h2>
 
@@ -20,7 +20,7 @@
 				{/each}
 
 				<div class="mt-8">
-					<Button label="Contact Me" to="#contact" variant="btn-dark" />
+					<Button label="Contact Me" href="#contact" variant="dark" />
 				</div>
 			</div>
 
@@ -47,5 +47,5 @@
 				></div>
 			</div>
 		</div>
-	</section>
-</Reveal>
+	</Reveal>
+</section>

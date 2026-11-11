@@ -1,31 +1,27 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, type Snippet } from 'svelte';
+
+	let { children }: { children: Snippet } = $props();
 
 	let el: HTMLElement;
-	let isVisible = $state(false);
-	let { children } = $props();
+	let hidden = $state(false);
 
+	// Content is visible in the server-rendered HTML and only hidden here, below the
+	// fold, so it stays readable if JavaScript never runs.
 	onMount(() => {
-		if (!el) return;
-		if (
-			window.matchMedia('(prefers-reduced-motion: reduce)').matches ||
-			!('IntersectionObserver' in window)
-		) {
-			isVisible = true;
-			return;
-		}
+		if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+		if (el.getBoundingClientRect().top < window.innerHeight) return;
+
+		hidden = true;
 
 		const observer = new IntersectionObserver(
-			(entries) => {
-				if (entries[0].isIntersecting) {
-					isVisible = true;
-					observer.unobserve(el);
+			([entry]) => {
+				if (entry.isIntersecting) {
+					hidden = false;
+					observer.disconnect();
 				}
 			},
-			{
-				threshold: 0.1,
-				rootMargin: '0px 0px -10% 0px'
-			}
+			{ rootMargin: '0px 0px -10% 0px' }
 		);
 
 		observer.observe(el);
@@ -34,20 +30,18 @@
 	});
 </script>
 
-<div bind:this={el} class:animate-fade={isVisible}>
+<div bind:this={el} class="reveal" class:reveal-hidden={hidden}>
 	{@render children()}
 </div>
 
 <style>
-	.animate-fade {
-		opacity: 1;
-		transform: translateY(0);
+	.reveal {
 		transition:
 			opacity 0.9s ease,
 			transform 0.9s ease;
 	}
 
-	div {
+	.reveal-hidden {
 		opacity: 0;
 		transform: translateY(20px);
 	}

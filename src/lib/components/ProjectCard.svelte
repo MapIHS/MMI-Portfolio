@@ -24,9 +24,7 @@
 		/>
 	</div>
 
-	<div
-		class="mt-3 rounded-xl border border-line bg-linear-to-t from-dark to-dark/90 p-4 transition-[transform,opacity] duration-500 md:absolute md:inset-x-6 md:bottom-6 md:mt-0 md:scale-90 md:overflow-hidden md:opacity-0 md:backdrop-blur-md md:group-focus-within:scale-100 md:group-focus-within:opacity-100 md:group-hover:scale-100 md:group-hover:opacity-100"
-	>
+	<div class="mt-3 flex-1 rounded-xl border border-line bg-linear-to-t from-dark to-dark/90 p-4">
 		<div>
 			<div class="flex items-center justify-between gap-4">
 				<div>
@@ -46,12 +44,15 @@
 						aria-label="Open {project.title}"
 						class="text-muted transition-colors hover:text-primary"
 					>
-						<SquareArrowOutUpRight size={24} strokeWidth={1.5} />
+						<SquareArrowOutUpRight size={24} strokeWidth={1.5} aria-hidden="true" />
 					</a>
 				{/if}
 			</div>
 
-			<div class="my-3 h-px w-44 bg-linear-to-r from-transparent via-primary to-transparent"></div>
+			<div
+				aria-hidden="true"
+				class="my-3 h-px w-44 bg-linear-to-r from-transparent via-primary to-transparent"
+			></div>
 
 			<p class="paragraph text-sm text-muted">
 				{project.description}

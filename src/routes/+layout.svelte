@@ -56,12 +56,15 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <Navbar />
 
-<main class="relative overflow-hidden">
+<main id="main" tabindex="-1" class="relative overflow-hidden">
 	{@render children()}
-
-	<div
-		class="pointer-events-none fixed inset-x-0 bottom-0 z-40 h-24 bg-linear-to-t from-dark to-transparent"
-	></div>
 </main>
+
+<div
+	aria-hidden="true"
+	class="pointer-events-none fixed inset-x-0 bottom-0 z-40 h-24 bg-linear-to-t from-dark to-transparent"
+></div>

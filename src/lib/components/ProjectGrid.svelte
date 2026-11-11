@@ -5,12 +5,12 @@
 	import { PROJECTS_COPY } from '$lib/data/profile';
 </script>
 
-<Reveal>
-	<section id="work" class="container">
+<section id="work" aria-labelledby="work-title" class="container">
+	<Reveal>
 		<div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
 			<div>
 				<p class="badge">{PROJECTS_COPY.label}</p>
-				<h2 class="section-title">
+				<h2 id="work-title" class="section-title">
 					{PROJECTS_COPY.headline}
 				</h2>
 				<p class="paragraph mt-4 max-w-xl">
@@ -34,5 +34,5 @@
 				<ProjectCard {project} />
 			{/each}
 		</div>
-	</section>
-</Reveal>
+	</Reveal>
+</section>
