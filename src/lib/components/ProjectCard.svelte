@@ -32,7 +32,9 @@
 		class="mt-3 flex flex-1 flex-col rounded-xl border border-line bg-linear-to-t from-dark to-dark/90 p-4"
 	>
 		<h3 class="text-lg font-bold tracking-wide text-white lg:text-xl">{project.title}</h3>
-		<p class="mt-1 text-sm font-medium tracking-wide text-muted uppercase">{project.category}</p>
+		<p class="mt-1 text-sm font-medium tracking-wide text-muted uppercase">
+			{project.category} · {project.year}
+		</p>
 
 		<div
 			aria-hidden="true"

@@ -23,7 +23,7 @@ export interface Project {
 	image: ProjectImage;
 	imageAlt: string;
 	links: ProjectLinks;
-	year?: number;
+	year: number;
 }
 
 const FLUTTER_STACK = ['Flutter', 'Dart'];
@@ -33,6 +33,7 @@ export const PROJECTS: Project[] = [
 		title: 'Otaku Toon',
 		slug: 'otaku-toon',
 		category: 'Entertainment',
+		year: 2025,
 		description: 'An app for reading anime-based comics and manga.',
 		techStack: FLUTTER_STACK,
 		image: otakuToon,
@@ -44,6 +45,7 @@ export const PROJECTS: Project[] = [
 		title: 'Conito App',
 		slug: 'conito-app',
 		category: 'Entertainment',
+		year: 2025,
 		description: 'A free, ad-free manhwa and manhua reader available in 50+ languages.',
 		techStack: FLUTTER_STACK,
 		image: conito,
@@ -55,6 +57,7 @@ export const PROJECTS: Project[] = [
 		title: 'IMoney',
 		slug: 'imoney',
 		category: 'Practice',
+		year: 2026,
 		description: 'An app to manage money and track daily budgets.',
 		techStack: FLUTTER_STACK,
 		image: imoney,
@@ -66,6 +69,7 @@ export const PROJECTS: Project[] = [
 		title: 'Foxnime',
 		slug: 'foxnime',
 		category: 'Entertainment',
+		year: 2026,
 		description: 'A free anime streaming app with a broad catalog.',
 		techStack: FLUTTER_STACK,
 		image: foxnime,
@@ -77,6 +81,7 @@ export const PROJECTS: Project[] = [
 		title: 'AniKyonn For Anilist',
 		slug: 'anikyonn',
 		category: 'Entertainment',
+		year: 2026,
 		description: 'An app for managing your anime lists on AniList.',
 		techStack: FLUTTER_STACK,
 		image: anikyonn,
