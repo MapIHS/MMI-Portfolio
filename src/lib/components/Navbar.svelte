@@ -108,7 +108,7 @@
 		: 'translate-y-[calc(100%+1.5rem)] opacity-0'} fixed inset-x-0 bottom-4 z-[60] flex justify-center px-4 pb-[env(safe-area-inset-bottom)] transition-[transform,opacity] duration-300 ease-out"
 >
 	<div
-		class="flex w-full max-w-md items-center justify-between gap-1 rounded-full border border-white/10 bg-black/70 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl sm:w-auto sm:justify-center sm:gap-2"
+		class="flex w-full max-w-md items-center justify-between gap-1 rounded-full border border-line bg-black/70 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl sm:w-auto sm:justify-center sm:gap-2"
 	>
 		{#each navItems as item (item.url)}
 			{@const active = activeUrl === item.url}
@@ -119,7 +119,7 @@
 				onclick={() => setActive(item.url)}
 				class="{active
 					? 'bg-white text-black shadow-lg shadow-white/10'
-					: 'text-white/55 hover:bg-white/10 hover:text-white'} group flex h-12 min-w-12 items-center justify-center rounded-full px-3 transition-all duration-200 sm:gap-2 sm:px-4"
+					: 'text-muted hover:bg-white/10 hover:text-white'} group flex h-12 min-w-12 items-center justify-center rounded-full px-3 transition-all duration-200 sm:gap-2 sm:px-4"
 			>
 				<item.icon size={20} strokeWidth={1.8} />
 				<span class="{active ? 'inline' : 'hidden'} text-sm font-medium sm:inline">

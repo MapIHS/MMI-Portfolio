@@ -25,10 +25,10 @@
 			</div>
 
 			<div
-				class="group relative flex items-center justify-center rounded-2xl border border-white/10 bg-dark/40 p-3 backdrop-blur-sm"
+				class="group relative flex items-center justify-center rounded-card border border-line bg-dark/40 p-3 backdrop-blur-sm"
 			>
 				<img
-					class="w-full rounded-lg object-cover grayscale"
+					class="w-full rounded-control object-cover grayscale"
 					src={PROFILE.avatar}
 					alt="{PROFILE.fullName} - {PROFILE.role}"
 					width="1200"

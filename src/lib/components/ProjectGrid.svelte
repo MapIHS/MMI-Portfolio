@@ -19,13 +19,13 @@
 			</div>
 
 			<div
-				class="flex w-fit items-center gap-3 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-white"
+				class="flex w-fit items-center gap-3 rounded-full border border-line bg-white/[0.03] px-4 py-2 text-white"
 				aria-label="{PROJECTS.length} projects"
 			>
 				<span class="text-2xl font-semibold tabular-nums">
 					{String(PROJECTS.length).padStart(2, '0')}
 				</span>
-				<span class="text-xs font-medium tracking-wide text-white/50 uppercase">Projects</span>
+				<span class="text-xs font-medium tracking-wide text-muted uppercase">Projects</span>
 			</div>
 		</div>
 

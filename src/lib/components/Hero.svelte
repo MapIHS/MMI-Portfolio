@@ -5,7 +5,7 @@
 	import { GITHUB, HERO } from '$lib/data/profile';
 </script>
 
-<div id="hero" class="relative container py-40">
+<div id="hero" class="relative container py-hero">
 	<div class="relative z-10 flex flex-col items-center">
 		<div class="badge flex items-center gap-2">
 			<div class="h-2 w-2 animate-pulse rounded-full bg-primary"></div>
@@ -31,7 +31,7 @@
 				rel="noopener noreferrer"
 				aria-label="Open GitHub profile"
 				title="GitHub"
-				class="btn-dark group relative inline-flex size-12 items-center justify-center overflow-hidden rounded-lg p-0"
+				class="btn-dark group relative inline-flex size-12 items-center justify-center overflow-hidden rounded-control p-0"
 			>
 				<div
 					class="absolute inset-x-0 top-0 h-4 w-full rounded-full bg-white/20 blur-lg transition-all duration-500 group-hover:h-1/2"

@@ -10,9 +10,9 @@
 </script>
 
 <article
-	class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-dark/40 p-3 backdrop-blur-sm focus-within:border-white/20"
+	class="group relative flex flex-col overflow-hidden rounded-card border border-line bg-dark/40 p-3 backdrop-blur-sm focus-within:border-white/20"
 >
-	<div class="aspect-4/3 w-full overflow-hidden rounded-lg">
+	<div class="aspect-4/3 w-full overflow-hidden rounded-control">
 		<img
 			class="h-full w-full object-cover transition-transform duration-500 group-focus-within:scale-105 group-hover:scale-105"
 			src={project.image}
@@ -25,7 +25,7 @@
 	</div>
 
 	<div
-		class="mt-3 rounded-xl border border-white/10 bg-linear-to-t from-dark to-dark/90 p-4 transition-[transform,opacity] duration-500 md:absolute md:inset-x-6 md:bottom-6 md:mt-0 md:scale-90 md:overflow-hidden md:opacity-0 md:backdrop-blur-md md:group-focus-within:scale-100 md:group-focus-within:opacity-100 md:group-hover:scale-100 md:group-hover:opacity-100"
+		class="mt-3 rounded-xl border border-line bg-linear-to-t from-dark to-dark/90 p-4 transition-[transform,opacity] duration-500 md:absolute md:inset-x-6 md:bottom-6 md:mt-0 md:scale-90 md:overflow-hidden md:opacity-0 md:backdrop-blur-md md:group-focus-within:scale-100 md:group-focus-within:opacity-100 md:group-hover:scale-100 md:group-hover:opacity-100"
 	>
 		<div>
 			<div class="flex items-center justify-between gap-4">
@@ -33,7 +33,7 @@
 					<h3 class="text-lg font-bold tracking-wide text-white lg:text-xl">
 						{project.title}
 					</h3>
-					<p class="mt-1 text-sm font-medium tracking-wide text-white/60 uppercase">
+					<p class="mt-1 text-sm font-medium tracking-wide text-muted uppercase">
 						{project.category}
 					</p>
 				</div>
@@ -44,7 +44,7 @@
 						target="_blank"
 						rel="noopener noreferrer"
 						aria-label="Open {project.title}"
-						class="text-white/50 transition-colors hover:text-primary"
+						class="text-muted transition-colors hover:text-primary"
 					>
 						<SquareArrowOutUpRight size={24} strokeWidth={1.5} />
 					</a>
@@ -53,7 +53,7 @@
 
 			<div class="my-3 h-px w-44 bg-linear-to-r from-transparent via-primary to-transparent"></div>
 
-			<p class="paragraph text-sm text-white/60">
+			<p class="paragraph text-sm text-muted">
 				{project.description}
 			</p>
 		</div>
