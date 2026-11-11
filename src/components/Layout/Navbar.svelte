@@ -110,7 +110,7 @@
 	<div
 		class="flex w-full max-w-md items-center justify-between gap-1 rounded-full border border-white/10 bg-black/70 p-2 shadow-2xl shadow-black/40 backdrop-blur-xl sm:w-auto sm:justify-center sm:gap-2"
 	>
-		{#each navItems as item}
+		{#each navItems as item (item.url)}
 			{@const active = activeUrl === item.url}
 			<a
 				href={item.url}

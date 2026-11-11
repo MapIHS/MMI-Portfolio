@@ -52,7 +52,7 @@
 			aria-label="Project previews"
 			class="flex animate-infinite-scroll items-center justify-center md:justify-start [&_img]:max-w-none [&_li]:mx-2"
 		>
-			{#each PROJECT.project as item}
+			{#each PROJECT.project as item (item.name)}
 				<li class="group overflow-hidden">
 					<img
 						class="h-[300px] w-auto rounded-xl grayscale transition-[transform,opacity] group-hover:scale-105 group-hover:opacity-70"
@@ -65,7 +65,7 @@
 				</li>
 			{/each}
 
-			{#each PROJECT.project as item}
+			{#each PROJECT.project as item (item.name)}
 				<li class="group overflow-hidden" aria-hidden="true">
 					<img
 						class="h-[300px] w-auto rounded-xl grayscale transition-[transform,opacity] group-hover:scale-105 group-hover:opacity-70"

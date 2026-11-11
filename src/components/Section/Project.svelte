@@ -29,7 +29,7 @@
 		</div>
 
 		<div class="mt-16 grid gap-6 md:grid-cols-2">
-			{#each PROJECT.project as item}
+			{#each PROJECT.project as item (item.name)}
 				<article
 					class="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-dark/40 p-3 backdrop-blur-sm focus-within:border-white/20"
 				>

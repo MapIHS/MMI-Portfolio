@@ -13,7 +13,7 @@
 					{PROFILE.fullname}
 				</h2>
 
-				{#each ABOUT.introduce as intro}
+				{#each ABOUT.introduce as intro (intro)}
 					<p class="paragraph mt-4">
 						{intro}
 					</p>
