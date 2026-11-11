@@ -1,11 +1,16 @@
 <script lang="ts">
-	import { SquareArrowOutUpRight } from 'lucide-svelte';
+	import { ExternalLink, Github, Play } from 'lucide-svelte';
+	import Button from './Button.svelte';
 	import type { Project } from '$lib/data/projects';
 
 	let { project }: { project: Project } = $props();
 
-	const primaryLink = $derived(
-		project.links.demo ?? project.links.playstore ?? project.links.github
+	const actions = $derived(
+		[
+			{ label: 'Source', href: project.links.github, icon: Github },
+			{ label: 'Play Store', href: project.links.playstore, icon: Play },
+			{ label: 'Demo', href: project.links.demo, icon: ExternalLink }
+		].filter((action) => action.href)
 	);
 </script>
 
@@ -23,40 +28,43 @@
 		/>
 	</div>
 
-	<div class="mt-3 flex-1 rounded-xl border border-line bg-linear-to-t from-dark to-dark/90 p-4">
-		<div>
-			<div class="flex items-center justify-between gap-4">
-				<div>
-					<h3 class="text-lg font-bold tracking-wide text-white lg:text-xl">
-						{project.title}
-					</h3>
-					<p class="mt-1 text-sm font-medium tracking-wide text-muted uppercase">
-						{project.category}
-					</p>
-				</div>
+	<div
+		class="mt-3 flex flex-1 flex-col rounded-xl border border-line bg-linear-to-t from-dark to-dark/90 p-4"
+	>
+		<h3 class="text-lg font-bold tracking-wide text-white lg:text-xl">{project.title}</h3>
+		<p class="mt-1 text-sm font-medium tracking-wide text-muted uppercase">{project.category}</p>
 
-				{#if primaryLink}
-					<a
-						href={primaryLink}
+		<div
+			aria-hidden="true"
+			class="my-3 h-px w-44 bg-linear-to-r from-transparent via-primary to-transparent"
+		></div>
+
+		<p class="paragraph text-sm">{project.description}</p>
+
+		<ul aria-label="Tech stack" class="mt-auto flex flex-wrap gap-2 pt-4">
+			{#each project.techStack as tech (tech)}
+				<li class="tag">{tech}</li>
+			{/each}
+		</ul>
+
+		{#if actions.length > 0}
+			<div class="mt-4 flex flex-wrap gap-2">
+				{#each actions as action (action.label)}
+					<Button
+						label={action.label}
+						href={action.href}
+						variant="dark"
 						target="_blank"
 						rel="noopener noreferrer"
-						aria-label="Open {project.title}"
-						class="text-muted transition-colors hover:text-primary"
+						aria-label="{action.label}: {project.title} (opens in a new tab)"
 					>
-						<SquareArrowOutUpRight size={24} strokeWidth={1.5} aria-hidden="true" />
-					</a>
-				{/if}
+						{#snippet icon()}
+							<action.icon class="relative" size={16} strokeWidth={1.8} aria-hidden="true" />
+						{/snippet}
+					</Button>
+				{/each}
 			</div>
-
-			<div
-				aria-hidden="true"
-				class="my-3 h-px w-44 bg-linear-to-r from-transparent via-primary to-transparent"
-			></div>
-
-			<p class="paragraph text-sm text-muted">
-				{project.description}
-			</p>
-		</div>
+		{/if}
 	</div>
 
 	<div

@@ -5,6 +5,7 @@
 	import Hero from '$lib/components/Hero.svelte';
 	import ProjectGrid from '$lib/components/ProjectGrid.svelte';
 	import Seo from '$lib/components/Seo.svelte';
+	import Skills from '$lib/components/Skills.svelte';
 </script>
 
 <Seo />
@@ -18,6 +19,8 @@
 	></div>
 	<About />
 </div>
+<Divider />
+<Skills />
 <Divider />
 <div class="relative">
 	<div

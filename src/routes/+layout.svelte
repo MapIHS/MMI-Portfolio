@@ -10,6 +10,8 @@
 	import poppinsRegular from '@fontsource/poppins/files/poppins-latin-400-normal.woff2?url';
 	import poppinsBold from '@fontsource/poppins/files/poppins-latin-700-normal.woff2?url';
 	import './layout.css';
+	import { page } from '$app/state';
+	import Footer from '$lib/components/Footer.svelte';
 	import Navbar from '$lib/components/Navbar.svelte';
 
 	let { children } = $props();
@@ -59,11 +61,15 @@
 
 <a href="#main" class="skip-link">Skip to content</a>
 
-<Navbar />
+{#if !page.error}
+	<Navbar />
+{/if}
 
 <main id="main" tabindex="-1" class="relative overflow-hidden">
 	{@render children()}
 </main>
+
+<Footer />
 
 <div
 	aria-hidden="true"
